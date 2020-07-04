@@ -1,0 +1,41 @@
+<%- include ('../partial/header') %>    
+<section class="tv-page-title-section tv-bg-theme-col tv-padd-tb-40">
+                <div class="container">
+                    <div class="flex-box-view-one">
+                        <div class="tv-page-title"><h1>Pricing</h1></div>
+                        <div class="tv-breadcrumb-box">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">home</a></li>
+                                <li class="breadcrumb-item active">Pricing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           <div class="container mb-5 mt-5">
+              
+    <div class="pricing card-deck flex-column flex-md-row mb-3">
+        <input type="hidden" name="membership_price" value=""/>
+        <% for(var i=0;i < membership.length;i++){ %>
+        <div class="card card-pricing text-center px-3 mb-4 col-md-3" attr-id="<%= membership[i].name %>">
+           
+            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm"><%= membership[i].name %></span>
+            <div class="bg-transparent card-header pt-4 border-0">
+                
+                <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15">$<span class="price"><%= membership[i].billing_amount %></span><span class="h6 text-muted ml-2">/ per <%= membership[i].billing_amount_suffix %></span></h1>
+            </div>
+            <div class="card-body pt-0">
+                <ul class="list-unstyled mb-4">
+                    <% var desc=membership[i].description.split(','); %>
+                    <% for(var j=0; j< desc.length ; j++){ %>
+                    <li><%= desc[j] %></li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <% } %>
+    </div>
+    <a ref="" class="btn select-membership btn-primary disabled">Continue</a>
+</div>
+  <%- include ('../partial/footer') %>
+

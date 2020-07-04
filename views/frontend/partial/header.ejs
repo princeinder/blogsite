@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blog Template</title>
+        <meta name="description" content="Blog Template">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="/frontend/images/favicon.png">
+
+        <!--styles-->
+        <link rel="stylesheet" href="/frontend/css/bootstrap.css"/>
+        <!--plugin css-->
+        <link rel="stylesheet" href="/frontend/css/swiper.css"/>
+        <link rel="stylesheet" href="/frontend/css/slick.css"/>
+        <link rel="stylesheet" href="/frontend/css/gridrotator-custom.css"/>
+
+
+        <!--custom css-->
+        <link rel="stylesheet" href="/frontend/css/style.css"/>
+        <link rel="stylesheet" href="/frontend/css/responsive.css"/>
+        <link rel="stylesheet" href="/frontend/material-icon/css/material-design-iconic-font.min.css">
+
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="/frontend/css/style.css">
+
+        <!--script-->
+        <script src="/frontend/js/jquery-2.0.0.min.js" type="text/javascript"></script>
+        <script src="/frontend/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/frontend/js/swiper.min.js" type="text/javascript"></script>
+        <script src="/frontend/js/slick.min.js" type="text/javascript"></script>
+        <script src="/frontend/js/modernizr_custom.js" type="text/javascript"></script>
+        <script src="/frontend/js/jquery.gridrotator.js" type="text/javascript"></script>
+       
+    </head>
+    <body>
+
+        <div id="page">
+            <!-----------Header Section----------------->
+            <header class="tv-header-area">
+                <div class="tv-top-header">
+                    <div class="container">
+                        <div class="tv-top-header-inner flex-box-view-one">
+                             <div class="tv-main-menu tv-sticky-header">
+                    <div class="navbar-default container">
+                        <nav class="navbar navbar-expand-md navbar-light">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+                                <span class="ti-menu"></span>
+                            </button>
+                            <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+                                <ul class="navbar-nav tv-reset-navbar">
+                                    <li class="nav-item active ">
+                                        <a class="tv-dropdown-toggle nav-link" href="/"  >
+                                            Home
+                                        </a>
+                                    </li>
+
+                         
+                                   
+                                 </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Categories
+                                          </a>
+                                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <% if(categories){ %>
+                                                <% for(var i=0; i < categories.length; i++) { %>
+                                                    <a class="dropdown-item" href="/cat/<%= categories[i].id %>"><%= categories[i].title %></a>
+                                            <% } %>
+                                            <% } %>
+                                          
+                                   
+                                          </div>
+                                    </li>
+ <li class="nav-item">
+                                        <a class="nav-link" href="/pricing">Pricing</a>
+                                    </li>
+									<li class="nav-item">
+                                        <% if (user) { %>
+                                             <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img style="max-width: 2.5rem;" src="/backend/images/avatars/<%= user.pimage %>" class="user-avatar rounded-circle mr-2" alt="...">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/logout">logout</a>
+          <a class="dropdown-item"  href="/profile">Profile</a>
+ 
+        </div>
+                                        <%} else { %>
+                                        <a class="nav-link" href="/login">Login</a>
+
+                                        <% } %>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </nav>
+                    </div>
+                </div>
+                            <div class="tv-top-socials">
+                                <ul>
+                                    <li><a href="https://www.facebook.com/Wave-x-Culture-632070457213425/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://www.instagram.com/wavexculturedotcom/"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <!-- <li><a href=""><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href=""><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href=""><i class="fa fa-skype" aria-hidden="true"></i></a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="tv-middle-header">
+                    <div class="container">
+                        <div class="tv-logo text-center">
+                            <a href="/"><img src="/frontend/images/logo.png" alt="logo"></a>
+                        </div>
+                         <% if (user) { %>
+						<div class="tv-search-block pull-right">
+                                <ul>
+                                    <li class="list-inline"><a onclick="openNav()" class="tv-search-btn"><i class="ti-search"></i></a></li>								
+                                </ul>
+                            </div>
+                             <%}  %>
+                    </div>
+                </div>
+               
+
+
+                <!-----------Search Section----------------->
+                   <% if (user) { %>
+                <div class="tv-search-overlay" id="search_nav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                    <div class="search-overlay-content">
+                        <div class="container tv-search-wrapper">
+                            <form class="tv-search-form">
+                                <input value="" name="s" class="sh-header-search-side-input" placeholder="Enter a keyword to search..." type="text">
+                                <button type="submit" class="tv-search-button"><i class="ti-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                     <%}  %>
+                <!-----------End----------------->
+            </header>
+            <!-----------End----------------->

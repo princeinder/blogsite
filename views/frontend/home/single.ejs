@@ -1,0 +1,228 @@
+<%- include ('../partial/header') %>
+            <section class="tv-page-title-section tv-bg-theme-col tv-padd-tb-40">
+                <div class="container">
+                    <div class="flex-box-view-one">
+                        <div class="tv-page-title"><h1>Single Blog</h1></div>
+                        <div class="tv-breadcrumb-box">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">home</a></li>
+                                <li class="breadcrumb-item active"><%= post.post_title %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <section class="tv-content-container tv-section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-8 col-lg-8 col-md-12 order-xl-1 order-lg-1 order-2">
+                            <div class="tv-single-blog tv-blog-style-one">
+                                <article class="tv-single-blog-item">
+                                    <div class="tv-post-image">
+                                        <img src="/backend/images/post/<%= post.post_thumbnail %>" class="img-fluid" alt="single-blog-image">
+                                    </div>
+                                    <div class="tv-post-content-holder">
+                                        <div class="post-extra-details">
+                                            <div class="post-categories">
+                                                <%  var cat=post.category.split(',') %>
+                                                <% for(var j=0; j < cat.length; j++) { %>
+                                                    <a href="/cat/<%= cat[j].split('-')[1] %>"><%= cat[j].split('-')[0] %></a>
+                                               <% } %>
+                                            </div>
+                                            <div class="post-title">
+                                                <h2><%= post.post_title %></h2>
+                                            </div>
+                                            <div class="single-post-meta">
+                                                <span class="post-author"><a href=""><%= post.name %></a></span>
+                                                <span class="posts-date">
+                                                    <i class="ti-calendar"></i><%= moment(post.created_at).format('DD MMMM, YYYY') %></span>
+                                                <span class="comment-count"><a href=""><i class="ti-comment"></i>0</a></span>
+                                                <span class="post-read-time"><i class="ti-time"></i>0</span>
+                                                <span class="post-views"><i class="ti-eye"></i>550</span>
+                                            </div>
+                                        </div>
+                                        <%- post.post_content %>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="post-share">
+                                        <div class="post-share-list">
+                                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                            <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+                                            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="tv-tag-list tv-dark-color">
+                                        <a href="tag.html" class="tv-tag-link">#Style</a>
+                                        <a href="tag.html" class="tv-tag-link">#Tips</a>
+                                        <a href="tag.html" class="tv-tag-link">#Men</a>
+                                        <a href="tag.html" class="tv-tag-link">#Shop</a>
+                                    </div>
+
+                                </article>
+                                <div class="tv-comment-area-wrapper">
+                                    <div class="tv-comment-area-inner">
+                                        <div class="tv-comments">
+                                            <div class="tv-comment-list">
+                                                <h3 class="tv-comment-title">4 Comments Found</h3>
+                                                <div class="tv-review-box clearfix">
+                                                    <figure class="tv-review-thumb"><img src="images/c-review-img1.jpg" alt="review-image"></figure>
+                                                    <div class="tv-review-content">
+                                                        <div class="tv-review-info"><strong>Jenifer &ndash; February 04, 2017: </strong></div>
+                                                        <div class="tv-review-text">
+                                                            <p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis</p>
+                                                        </div>
+                                                        <div class="tv-review-reply">
+                                                            <a href="#"><span><i class="fa fa-reply" aria-hidden="true"></i> Reply</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tv-review-box tv-sub-comment-first clearfix">
+                                                    <figure class="tv-review-thumb"><img src="images/c-review-img2.jpg" alt="review-image"></figure>
+                                                    <div class="tv-review-content">
+                                                        <div class="tv-review-info"><strong>Adam &ndash; February 04, 2017: </strong></div>
+                                                        <div class="tv-review-text">
+                                                            <p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis</p>
+                                                        </div>
+                                                        <div class="tv-review-reply">
+                                                            <a href="#"><span><i class="fa fa-reply" aria-hidden="true"></i> Reply</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tv-review-box tv-sub-comment-second clearfix">
+                                                    <figure class="tv-review-thumb"><img src="images/c-review-img3.jpg" alt="review-image"></figure>
+                                                    <div class="tv-review-content">
+                                                        <div class="tv-review-info"><strong>Laiba &ndash; February 04, 2017: </strong></div>
+                                                        <div class="tv-review-text">
+                                                            <p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis</p>
+                                                        </div>
+                                                        <div class="tv-review-reply">
+                                                            <a href="#"><span><i class="fa fa-reply" aria-hidden="true"></i> Reply</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tv-review-box clearfix">
+                                                    <figure class="tv-review-thumb"><img src="images/c-review-img4.jpg" alt="review-image"></figure>
+                                                    <div class="tv-review-content">
+                                                        <div class="tv-review-info"><strong>Walter &ndash; February 04, 2017: </strong></div>
+                                                        <div class="tv-review-text">
+                                                            <p>Sed eget turpis a pede tempor malesuada. Vivamus quis mi at leo pulvinar hendrerit. Cum sociis natoque penatibus et magnis dis</p>
+                                                        </div>
+                                                        <div class="tv-review-reply">
+                                                            <a href="#"><span><i class="fa fa-reply" aria-hidden="true"></i> Reply</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tv-comment-form-box">
+                                            <h3 class="tv-comment-title">Leave a Comment</h3>
+                                            <form id="tv-comment-form">
+                                                <div class="row">
+                                                    <p class="comment-form-comment col-sm-12">
+                                                        <textarea id="comment" class="form-control" name="comment" placeholder="Your comment *" required="required"></textarea>
+                                                    </p>
+                                                    <p class="comment-form-author col-sm-4"><input id="author" class="form-control" name="author" placeholder="Your name *" value="" required="required" type="text"></p>                                            
+                                                    <p class="comment-form-email col-sm-4"><input id="email" class="form-control" name="email" placeholder="Your e-mail *" value="" required="required" type="text"></p>
+                                                    <p class="comment-form-url col-sm-4"><input id="url" class="form-control" name="url" placeholder="Your website" value="" type="text"></p>
+                                                    <p class="form-submit col-sm-12 tv-offspace-top-40"><input name="submit" id="submit" value="Leave A Reply" type="submit"></p>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 order-1 tv-right-sidebar" id="sidebar">
+                            <div class="tv-sidebar-container">
+                                <div class="tv-widget tv-widget-about">
+                                    <div class="tv-heading-section">
+                                        <div class="tv-heading-title">
+                                            <h3>Meet the Author</h3>
+                                        </div>
+                                        <div class="tv-seperator-content">
+                                            <div class="tv-seperator-line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tv-about-me-profile text-center">
+                                        <img src="images/profile-pic.jpg" alt="" class="">
+                                    </div>
+                                    <div class="tv-about-me-content text-center">
+                                        <div class="tv-author-name">
+                                            <h3><%= post.name %></h3>
+                                            <span class="tv-author-profession">Ghost Blogger</span>
+                                        </div>
+                                        <div class="tv-author-bio">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pellentesque, neque nec interdum vulputate, erat sapien accumsan tortor, ac luctus lacus odio vitae velit. </p>
+                                        </div>
+                                        <div class="tv-author-social">
+                                            <ul>
+                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tv-widget tv-widget-category">
+                                    <div class="tv-heading-section">
+                                        <div class="tv-heading-title">
+                                            <h3>Category</h3>
+                                        </div>
+                                        <div class="tv-seperator-content">
+                                            <div class="tv-seperator-line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tv-widget-category-box">
+                                        <ul class="tv-widget-category-list">
+                                            <% if(categories){ %>
+                                                <% for(var i=0; i < categories.length; i++) { %>
+
+                                            <li><a href="/cat/<%= categories[i].id %>"><%= categories[i].title %> <span class="count"><%= categories[i].count %></span></a></li>
+                                            <% } %>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="tv-widget tv-widget-image">
+                                    <a href=""><img src="images/adv1.png" class="img-fluid" alt="custom-image"></a>
+                                </div>
+
+                                <div class="tv-widget tv-widget-subscribe">
+                                    <div class="tv-heading-section">
+                                        <div class="tv-heading-title">
+                                            <h3>Subscribe Now</h3>
+                                        </div>
+                                        <div class="tv-seperator-content">
+                                            <div class="tv-seperator-line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tv-widget-subscribe-box">
+                                        <form class="tv-widget-subscribe-form">
+                                            <div class="tv-widget-subscribe-form-fields">
+                                                <p>
+                                                    <input name="EMAIL" placeholder="Your email address" required="" type="email">
+                                                    <input value="Sign up" type="submit">
+                                                </p>
+                                            </div>
+                                        </form>
+                                        <p class="tv-widget-subscribe-description">* You will receive the latest news and updates on your favorite celebrities!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tv-section-padding"></section>
+
+   <%- include ('../partial/footer') %>

@@ -1,0 +1,155 @@
+<%- include ('../partial/header') %>    
+      <%- include ('../partial/sidebar') %>
+      <!-- End Main Sidebar -->
+      <%- include ('../partial/navbar') %>
+ 
+        <!-- / .main-navbar -->
+        <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <span class="text-uppercase page-subtitle">Blog Posts</span>
+                <h3 class="page-title">Edit Post</h3>
+                <div class="post_error"></div>
+                <div class="post_success"></div>
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <div class="row">
+              <div class="col-lg-9 col-md-12">
+                <!-- Add New Post Form -->
+                <div class="card card-small mb-3">
+                  <div class="card-body">
+                    <form class="add-new-post">
+                      <input class="form-control form-control-lg mb-3" id="author_id" type="hidden" placeholder="Your Post Title" name="author_id" value="<%- user.id -%>">
+                      <input type="hidden" class="form-control form-control-lg mb-3" id="post_id" type="text" placeholder="Your Post Title" name="post_id" value="<%- blogposts.id -%>">
+                      <input class="form-control form-control-lg mb-3" id="post_title" type="text" placeholder="Your Post Title" name="post_title" value="<%- blogposts.post_title -%>">
+                      <div id="editor-container" class="add-new-post__editor mb-1 ql-container ql-snow">
+                        <div class="ql-editor" data-gramm="false" contenteditable="true" data-placeholder="Words can be like x-rays if you use them properly...">
+                          <%- blogposts.post_content -%>
+
+                        </div><div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
+                        <div class="ql-tooltip ql-hidden"><a class="ql-preview" target="_blank" href="about:blank"></a>
+                          <input type="text" data-formula="e=mc^2" data-link="https://quilljs.com" data-video="Embed URL">
+                          <a class="ql-action"></a><a class="ql-remove"></a></div></div>
+                    </form>
+                  </div>
+                </div>
+                <!-- / Add New Post Form -->
+              </div>
+              <div class="col-lg-3 col-md-12">
+                <!-- Post Overview -->
+                <div class='card card-small mb-3'>
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Actions</h6>
+                  </div>
+                  <div class='card-body p-0'>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item p-3">
+                        <span class="d-flex mb-2">
+                          <i class="material-icons mr-1">flag</i>
+                          <strong class="mr-1">Status:</strong> Draft
+                          <a class="ml-auto" href="#">Edit</a>
+                        </span>
+                        <span class="d-flex mb-2">
+                          <i class="material-icons mr-1">visibility</i>
+                          <strong class="mr-1">Visibility:</strong>
+                          <strong class="text-success">Public</strong>
+                          <a class="ml-auto" href="#">Edit</a>
+                        </span>
+                        <span class="d-flex mb-2">
+                          <i class="material-icons mr-1">calendar_today</i>
+                          <strong class="mr-1">Schedule:</strong> Now
+                          <a class="ml-auto" href="#">Edit</a>
+                        </span>
+                        <span class="d-flex">
+                          <i class="material-icons mr-1">score</i>
+                          <strong class="mr-1">Readability:</strong>
+                          <strong class="text-warning">Ok</strong>
+                        </span>
+                      </li>
+                      <li class="list-group-item d-flex px-3">
+                        <button class="btn btn-sm btn-outline-accent">
+                          <i class="material-icons">save</i> Save Draft</button>
+                        <button id="postupdate" class="btn btn-sm btn-accent ml-auto" >
+                          <i class="material-icons">file_copy</i> Update </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- / Post Overview -->
+                <!-- Post Overview -->
+                <div class='card card-small mb-3'>
+                  <div class="card-header border-bottom" style="justify-content: center;text-align: center;">
+                    <h6 class="m-0">Featured Image</h6>
+                  </div>
+                  <div class='card-body p-0'>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item d-flex px-3" style="justify-content: center;">
+                        <img style="width: 100%;" class="uploadsrc" src="/backend/images/post/<%= blogposts.post_thumbnail %>" height="200" alt="Image preview...">
+                      </li>
+          
+                      <li class="list-group-item d-flex px-3"  style="justify-content: center;">
+                      
+                        <input id="uploadfeatured" type="file"/>
+                        <a href="" id="upload_link">Set featured image</a>
+                      </li>
+                  
+                      
+                    </ul>
+                  </div>
+                </div>
+                <div class='card card-small mb-3'>
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Categories</h6>
+                  </div>
+                  <div class='card-body p-0'>
+                    <ul class="list-group list-group-flush">
+                     
+                      <li class="list-group-item cat-list px-3 pb-2">
+                        <% if(cat){ %>
+                          <% var dat = blogposts.category.split(',') %>  
+                        <% for(var i=0; i < cat.length; i++) { %>
+                            <div class="custom-control custom-checkbox mb-1"  style="display: flex;
+                            justify-content: space-between;">   
+                                <% if(dat.indexOf(cat[i].title) == -1){ -%>
+                              <input type="checkbox" name="cat_id" class="custom-control-input cat-chk" value="<%= cat[i].id %>" id="<%= cat[i].id %>">
+                                <% } else { %>
+                                  <input type="checkbox" checked name="cat_id" class="custom-control-input cat-chk" value="<%= cat[i].id %>" id="<%= cat[i].id %>">
+                                  <% } %>
+                                <label class="custom-control-label" for="<%= cat[i].id %>"><%= cat[i].title %></label>
+                                <button id="deleteCategory" class="btn btn-white px-2 deleteCategory" data-id="<%= cat[i].id %>"  type="button" >
+                                  <i class="material-icons">remove</i></button>
+                              </div>
+                         <% } %>
+                         <% } %>
+                      </li>
+                   
+                      <div class="cat_error">
+
+                      </div>
+                      
+                      <li class="list-group-item d-flex px-3">
+                     
+                        <form id="addcategory" method="post" name="addcategory" >
+                        <div class="input-group">
+                            
+                          <input type="text" id="cat" name="category" class="form-control" placeholder="New category" aria-label="Add new category" aria-describedby="basic-addon2">
+                          <div class="input-group-append">
+                            <button id="addCategory" class="btn btn-white px-2" type="button" >
+                              <i class="material-icons">add</i>
+                            </button>
+                       
+                          </div>
+                        </div>
+                    </form>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- / Post Overview -->
+              </div>
+            </div>
+          </div>
+
+  <%- include ('../partial/footer') %>

@@ -1,0 +1,38 @@
+<%- include ('../partial/header') %>
+
+        <!-- Sign up form -->
+        <section class="signup main">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Profile</h2>
+                        <img style="max-width: 10rem;" src="/backend/images/avatars/<%= user.pimage %>" class="user-avatar rounded-circle mr-2" alt="...">
+                        <form method="POST" action="/update" class="register-form" id="register-form"  enctype='multipart/form-data'>
+                            <input type="hidden" name="id" id="id" placeholder="Your Name" value="<%= user.id %>" required/>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi  zmdi-image"></i></label>
+                                
+                                <input type="hidden" name="pimageold" id="pimageold" placeholder="Profile Picture" value="<%= user.pimage %>"/>
+                                <input type="file" name="pimage" id="pimage" placeholder="Profile Picture" value=""/>
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="name" id="name" placeholder="Your Name" value="<%= user.name %>" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" value="<%= user.email %>" placeholder="Your Email" required/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Update"/>
+                            </div>
+                            <% if (message.length > 0) { %>
+                                <div class="alert alert-danger"><%= message %></div>
+                            <% } %>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<%- include ('../partial/footer') %>

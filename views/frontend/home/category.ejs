@@ -1,0 +1,121 @@
+
+<%- include ('../partial/header') %>
+            <section class="tv-page-title-section tv-bg-theme-col tv-padd-tb-40">
+                <div class="container">
+                    <div class="flex-box-view-one">
+
+                        <div class="tv-page-title"><h1>Category: <%= currentcat.title %></h1></div>
+                        <div class="tv-breadcrumb-box">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active"><%=currentcat.title %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tv-content-container tv-section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-8 col-md-12 order-xl-1 order-lg-1 order-2">
+                            <div class="tv-post-category">
+                                <div class="row">
+                                    <% if(uposts){ %>
+                                        <% for(var i=0; i < uposts.length; i++) { %>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <article class="post-item">
+                                            <div class="post-thumnail">
+                                                <div class="post-thumnail-box">
+                                                    <div class="post-image" style="background-image: url('/backend/images/post/<%= uposts[i].post_thumbnail %>')"></div>
+                                                </div>
+                                                <a class="tv-post-overlay" href="/post/<%= uposts[i].id %>">
+                                                    <i class="ti-exchange-vertical"></i>
+                                                </a>
+                                            </div>
+                                            <div class="post-extra-details">
+
+                                                <div class="post-title">
+                                                    <h4><a href="/post/<%= uposts[i].id %>"><%= uposts[i].post_title %></a></h4>
+                                                </div>
+                                                <div class="post-content">
+                                                    <p><%- uposts[i].post_content %>...</p>
+                                                </div>
+                                                <div class="post-meta">
+                                                    <span class="posts-date">
+                                                        <i class="ti-calendar"></i><%= moment(uposts[i].created_at).format('DD MMMM, YYYY') %></span>
+                                                    <span class="comment-count"><a href=""><i class="ti-comments-smiley"></i>0</a></span>
+                                                    <span class="post-author"><a href=""><%= uposts[i].name %></a></span>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <% } %>
+                                    <% } else{ %>
+                                        <div class="col-lg-6 col-md-6 col-sm-6">
+                                            <article class="post-item">
+                                 <h4>No posts related to this category</h4>
+                                            </article>
+                                        </div>
+                                        <% } %>
+                      
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 order-1 tv-right-sidebar" id="sidebar">
+                            <div class="tv-sidebar-container">
+                       
+                               
+                                <div class="tv-widget tv-widget-category">
+                                    <div class="tv-heading-section">
+                                        <div class="tv-heading-title">
+                                            <h3>Category</h3>
+                                        </div>
+                                        <div class="tv-seperator-content">
+                                            <div class="tv-seperator-line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tv-widget-category-box">
+                                        <ul class="tv-widget-category-list">
+                                            <% if(categories){ %>
+                                                <% for(var i=0; i < categories.length; i++) { %>
+
+                                            <li><a href="/cat/<%= categories[i].id %>"><%= categories[i].title %> <span class="count"><%= categories[i].count %></span></a></li>
+                                            <% } %>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="tv-widget tv-widget-subscribe">
+                                    <div class="tv-heading-section">
+                                        <div class="tv-heading-title">
+                                            <h3>Subscribe Now</h3>
+                                        </div>
+                                        <div class="tv-seperator-content">
+                                            <div class="tv-seperator-line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tv-widget-subscribe-box">
+                                        <form class="tv-widget-subscribe-form">
+                                            <div class="tv-widget-subscribe-form-fields">
+                                                <p>
+                                                    <input name="EMAIL" placeholder="Your email address" required="" type="email">
+                                                    <input value="Sign up" type="submit">
+                                                </p>
+                                            </div>
+                                        </form>
+                                        <p class="tv-widget-subscribe-description">* You will receive the latest news and updates on your favorite celebrities!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tv-section-padding"></section>
+    
+   <%- include ('../partial/footer') %>

@@ -1,0 +1,59 @@
+<%- include ('../partial/header') %>
+ 
+        <!-- Main Sidebar -->
+        <%- include ('../partial/sidebar') %>
+        <!-- End Main Sidebar -->
+        <%- include ('../partial/navbar') %>
+          <!-- / .main-navbar -->
+          <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-6 col-sm-6 text-left text-sm-left mb-0">
+                <span class="text-uppercase page-subtitle">Blog Posts</span>
+              </div>
+              <div class="col-6 col-sm-6 text-right text-sm-right mb-0">
+                <a class="btn btn-primary" href="/dashboard/post">Add New Post </a >
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <div class="row">
+              <% if(blogposts) { %>
+                <% for(var i=0; i < blogposts.length; i++) { %>
+                  <div class="col-lg-4">
+                    <div class="card card-small card-post mb-4">
+                      <div class="card-post__image"  style="background-image: url('/backend/images/post/<%= blogposts[i].post_thumbnail %>')">
+                        <div class="card-post__author d-flex">
+                          <%  var cat=blogposts[i].category.split(',') %>
+                          <% for(var j=0; j < cat.length; j++) { %>
+                            <a href="#" class="badge badge-pill badge-warning"><%= cat[j].split('-')[0] %></a>
+                         <% } %>
+                        </div>
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title"><%- blogposts[i].post_title -%></h5>
+                        <p class="card-text text-muted"><%- blogposts[i].post_content.substr(0,100) %>...</p>
+                      </div>
+                      <div class="card-footer border-top d-flex">
+                        <div class="card-post__author d-flex">
+                          <a href="#" class="card-post__author-avatar card-post__author-avatar--small" style="background-image: url('/backend/images/avatars/<%= blogposts[i].pimage %>');">Written by <%- blogposts[i].name -%></a>
+                          <div class="d-flex flex-column justify-content-center ml-3">
+                            <span class="card-post__author-name"><%- blogposts[i].name -%></span>
+                            <small class="text-muted"><%= moment(blogposts[i].created_at).format('Do MMMM, YYYY') %></small>
+                          </div>
+                        </div>
+                        <div class="my-auto ml-auto">
+                          <a href="/dashboard/blogpost/edit/<%- blogposts[i].id -%>" ><i class="far fa-edit mr-2"></i> </a>
+                          <a href="/dashboard/blogpost/delete/<%- blogposts[i].id -%>""><i class="far fa fa-trash"></i> </a >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+       
+              <% } %>
+              <% } %>
+
+            </div>
+          </div>
+  
+    <%- include ('../partial/footer') %>

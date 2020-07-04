@@ -1,0 +1,15 @@
+#upload_link{
+    text-decoration:none;
+}
+#uploadfeatured{
+    display:none
+}
+
+
+footer.main-footer.d-flex.p-2.px-3.bg-white.border-top {
+    display: none !important;
+}
+
+.card-post a.badge.badge-pill {
+    margin: 5px;
+}

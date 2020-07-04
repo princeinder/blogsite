@@ -1,0 +1,73 @@
+<%- include ('../partial/header') %>  
+
+  <div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header justify-content-center row no-gutters py-4">
+      <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <% if (message.length > 0) { %>
+        <div class="alert alert-danger alert-dismissible fade show mb-0 justify-content-center" role="alert" style="text-align: center;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <i class="fa fa-check mx-2"></i>
+           
+            <strong>Error! </strong><%= message %> </div>
+            <% } %>
+        <h3 class="justify-content-center page-title" style="text-align: center;">Login</h3>
+      </div>
+    </div>
+    <!-- End Page Header -->
+    <!-- Default Light Table -->
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <div class="card card-small mb-4">
+          <div class="card-header border-bottom">
+            <h6 class="m-0">Account Details</h6>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item p-3">
+              <div class="row">
+                <div class="col">
+                  <form method="POST" action="/admin">
+                    <input type="hidden" class="form-control" id="id" placeholder="Full Name" value="">
+                    <div class="form-row">
+                      <div class="form-group col-md-12">
+                        <label for="feEmailAddress">Email</label>
+                        <input type="email" class="form-control" name="email" id="your_name" placeholder="Email" value="" required> </div>
+                      <div class="form-group col-md-12">
+                        <label for="fePassword">Password</label>
+                        <input type="password" class="form-control" name="password" id="your_pass" placeholder="Password" placeholder="Password" required> </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                            
+                    <button type="submit" name="signin" id="signin" class="btn btn-accent">Login</button>
+                  
+                  </form>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Default Light Table -->
+  </div>
+
+    </main>
+</div>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sharrre/2.0.1/jquery.sharrre.min.js"></script>
+    <script src="/backend/scripts/extras.1.1.0.min.js"></script>
+    <script src="/backend/scripts/shards-dashboards.1.1.0.min.js"></script>
+    <script src="/backend/scripts/app/app-blog-overview.1.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.min.js"></script>
+    <script src="/backend/scripts/app/app-blog-new-post.1.1.0.js"></script>
+    <script src="/backend/scripts/helper.js"></script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<%- include ('../partial/header') %>    
+         <%- include ('../partial/sidebar') %>
+         <!-- End Main Sidebar -->
+         <%- include ('../partial/navbar') %>
+         <div class="main-content-container container-fluid px-4">
+            <!-- Page Header -->
+            <div class="page-header row no-gutters py-4">
+              <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <a href="/dashboard/addmembership">Add Membership</a>
+              </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Default Light Table -->
+            <div class="row">
+              <div class="col">
+                <div class="card card-small mb-4">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">Membership Details</h6>
+                  </div>
+                  <div class="card-body p-0 pb-3 text-center">
+                    <table class="table mb-0">
+                      <thead class="bg-light">
+                        <tr>
+                          <th scope="col" class="border-0">Name</th>
+                          <th scope="col" class="border-0">Description</th>
+                          <th scope="col" class="border-0">Billing Amount</th>
+                          <th scope="col" class="border-0">Duration</th>
+                          <th scope="col" class="border-0">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% for(var i=0; i< memberships.length ; i++) { %>
+                          <tr>
+                          <td><%=  memberships[i].name %></td>
+                          <td><%=  memberships[i].description %></td>
+                          <td>$<%=  memberships[i].billing_amount %></td>
+                          <td><%=  memberships[i].billing_amount_mutiple %> / <%=  memberships[i].billing_amount_suffix %></td>
+                          <td>
+                            <a href="/dashboard/updatemembership/<%=  memberships[i].id %>" class="btn btn-primary"><i class="fa fa-edit mx-2"></i></a>
+                            <a href="/dashboard/membership/<%=  memberships[i].id %>" class="btn btn-danger"><i class="fa fa-trash mx-2"></i></a>
+                          </td>
+                          </tr>
+                          <% } %>
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Default Light Table -->
+            <!-- Default Dark Table -->
+           
+            <!-- End Default Dark Table -->
+          </div>
+
+          <%- include ('../partial/footer') %>
